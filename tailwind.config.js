@@ -13,7 +13,8 @@ module.exports = {
       colors: {
         "60": "#ffffff",
         "30": "#000000",
-        "10": "#6DCEFC",
+        "10": "#4bacea",
+        "0": "#fff"
       }
     },
   },

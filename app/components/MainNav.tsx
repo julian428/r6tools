@@ -49,7 +49,7 @@ export default function MainNav() {
           } duration-500 text-lg transition-all`}
         />
       </button>
-      <div className={`flex ${open && "flex-col"} items-start gap-8`}>
+      <div className={`flex md:flex-col items-start gap-8`}>
         <header className="flex md:gap-x-4 h-full justify-center items-center md:h-[40px] transition-all ">
           <Link href="/">
             <Logo className={`cursor-pointer duration-500 text-4xl`} />

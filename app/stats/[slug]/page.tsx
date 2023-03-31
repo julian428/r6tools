@@ -16,11 +16,10 @@ async function getStats(playerName: string) {
 
 export default async function StatsPage({ params }: Props) {
   const { rank, casual } = await getStats(params.slug);
-  if (typeof rank === "string" || typeof casual === "string")
-    <p>Not found:(</p>;
+  if (typeof rank === "string" || typeof casual === "string") <p>Not found.</p>;
   return (
     <>
-      <section className="h-48 gap-4 relative flex justify-end items-end px-8 py-4 bg-60">
+      <section className="h-48 gap-4 relative flex justify-end items-end px-8 py-4 bg-gradient-to-r from-10 to-blue-500">
         <article className="flex gap-4 absolute -bottom-14 p-2">
           <h1 className="text-2xl py-2 text-30">{rank.name}</h1>
           <img
