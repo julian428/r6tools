@@ -13,11 +13,13 @@ interface Props {
 export default function RootLayout({ children }: Props) {
   return (
     <html lang="en">
-      <body className="h-screen flex flex-col md:flex-row">
+      <body className="h-screen flex flex-col md:flex-row overflow-hidden">
         <header>
           <MainNav />
         </header>
-        <main className="flex-grow">{children}</main>
+        <main className="flex-grow max-h-screen overflow-y-auto">
+          {children}
+        </main>
       </body>
     </html>
   );

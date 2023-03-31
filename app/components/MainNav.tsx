@@ -36,7 +36,7 @@ export default function MainNav() {
     <nav
       className={`${
         open ? "md:w-72" : "md:w-20"
-      } bg-30 h-20 md:h-screen flex justify-between md:flex-col md:items-start relative p-5 md:pt-8 top-0 bottom-0 z-10 text-60 transition-all`}
+      } bg-30 h-20 md:h-full flex justify-between md:flex-col md:items-start relative p-5 md:pt-8 top-0 bottom-0 z-10 text-60 transition-all`}
     >
       <button
         type="button"
