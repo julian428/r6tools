@@ -1,6 +1,5 @@
 import axios from "axios";
 import StatsWrapper from "./components/statsWrapper";
-import Image from "next/image";
 
 interface Props {
   params: {
