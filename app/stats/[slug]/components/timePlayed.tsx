@@ -1,7 +1,14 @@
+import { AiOutlineHourglass as TimeIcon } from "react-icons/ai";
+
 interface Props {
   time: string;
 }
 
 export default function TimePlayed({ time }: Props) {
-  return <section>{time}</section>;
+  return (
+    <section className="flex gap-2 items-center">
+      <TimeIcon />
+      <p>{time}</p>
+    </section>
+  );
 }

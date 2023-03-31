@@ -19,7 +19,7 @@ export default async function StatsPage({ params }: Props) {
   if (typeof rank === "string" || typeof casual === "string") <p>Not found.</p>;
   return (
     <>
-      <section className="h-48 gap-4 relative flex justify-end items-end px-8 py-4 bg-gradient-to-r from-10 to-blue-500">
+      <section className="h-48 gap-4 relative flex justify-end items-end px-8 py-4 bg-gradient-to-r from-10 to-01 mb-12">
         <article className="flex gap-4 absolute -bottom-14 p-2">
           <h1 className="text-2xl py-2 text-30">{rank.name}</h1>
           <img
@@ -29,14 +29,16 @@ export default async function StatsPage({ params }: Props) {
           />
         </article>
       </section>
-      <StatsWrapper
-        label="Ranked"
-        stats={rank}
-      />
-      <StatsWrapper
-        label="Casual"
-        stats={casual}
-      />
+      <section className="flex flex-col md:flex-row flex-wrap p-4 gap-4">
+        <StatsWrapper
+          label="Ranked"
+          stats={rank}
+        />
+        <StatsWrapper
+          label="Casual"
+          stats={casual}
+        />
+      </section>
     </>
   );
 }

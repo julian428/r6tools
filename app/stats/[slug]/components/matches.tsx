@@ -1,12 +1,14 @@
+import { SlGameController as GameIcon } from "react-icons/sl";
+
 interface Props {
   matches: string;
 }
 
 export default function Matches({ matches }: Props) {
   return (
-    <section className="p-2 bg-slate-500 w-fit rounded text-center">
+    <section className="flex gap-2 items-center">
       <p>{matches}</p>
-      <h3>Matches Played</h3>
+      <GameIcon />
     </section>
   );
 }
