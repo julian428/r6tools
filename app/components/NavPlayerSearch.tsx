@@ -14,7 +14,6 @@ interface Props {
 
 export default function StandardInput({ label, show, ...props }: Props) {
   const [loading, setLoading] = useState(false);
-  const [oldPath, setOldPath] = useState("/");
   const userNameRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
   const pathName = usePathname();
@@ -27,8 +26,6 @@ export default function StandardInput({ label, show, ...props }: Props) {
   };
 
   useEffect(() => {
-    if (pathName === oldPath) return;
-    setOldPath(pathName);
     setLoading(false);
   }, [pathName]);
 
