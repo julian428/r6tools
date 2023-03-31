@@ -1,12 +1,8 @@
-import SearchStats from "./components/SearchStats";
-
 export default function Home() {
   return (
-    <>
-      <article className="flex flex-col items-center py-16 gap-2">
-        <SearchStats />
-        <h3>Search for a player to get his stats</h3>
-      </article>
-    </>
+    <article>
+      <h1>R6 Tools</h1>
+      <p>Hello, welcome to R6 tools. A page for R6s haters by R6s haters.</p>
+    </article>
   );
 }

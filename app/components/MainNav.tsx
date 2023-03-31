@@ -54,13 +54,13 @@ export default function MainNav() {
           <Link href="/">
             <Logo className={`cursor-pointer duration-500 text-4xl`} />
           </Link>
-          <h1
+          <h2
             className={`text-60 origin-left font-medium text-xl transition-all duration-300 ${
               !open && "hide"
             }`}
           >
             R6 tools
-          </h1>
+          </h2>
         </header>
         <NavPlayerSearch
           label="username"

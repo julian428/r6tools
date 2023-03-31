@@ -23,9 +23,15 @@ export default function StandardInput({ label, show, ...props }: Props) {
     setLoading(true);
     const userName = userNameRef.current?.value || "";
     router.push(`/stats/${userName}`);
+    const currentUser = pathName.split("/");
+    if (userName === currentUser[currentUser.length - 1]) {
+      (userNameRef.current as HTMLInputElement).value = "";
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
+    (userNameRef.current as HTMLInputElement).value = "";
     setLoading(false);
   }, [pathName]);
 
