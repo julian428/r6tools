@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { MdKeyboardControlKey as ControlIcon } from "react-icons/md";
+import { AiOutlineArrowUp as ControlIcon } from "react-icons/ai";
 import { SiTaichilang as ContrastIcon } from "react-icons/si";
 import { GiPerspectiveDiceSixFacesRandom as RandomIcon } from "react-icons/gi";
 import { FiSettings as SettingsIcon } from "react-icons/fi";
@@ -9,9 +9,24 @@ import {
   BsMap as MapIcon,
 } from "react-icons/bs";
 import Link from "next/link";
+import { IconType } from "react-icons";
+import NavPlayerSearch from "./NavPlayerSearch";
+
+interface PageType {
+  label: string;
+  link: string;
+  icon: IconType;
+}
 
 export default function MainNav() {
   const [open, setOpen] = useState(true);
+
+  const pages = [
+    { label: "Player Contrast", icon: ContrastIcon, link: "/player-contrast" },
+    { label: "Player Contrast", icon: MapIcon, link: "/maps" },
+    { label: "Player Contrast", icon: RandomIcon, link: "/random-op" },
+    { label: "Player Contrast", icon: SettingsIcon, link: "/settings" },
+  ];
 
   useEffect(() => {
     setOpen(!(window.innerWidth < 769));
@@ -34,67 +49,39 @@ export default function MainNav() {
           } duration-500 text-lg transition-all`}
         />
       </button>
-      <header className="flex md:gap-x-4 h-full justify-center items-center md:h-[40px] transition-all ">
-        <Link href="/">
-          <Logo className={`cursor-pointer duration-500 text-4xl`} />
-        </Link>
-        <h1
-          className={`text-60 origin-left font-medium text-xl transition-all duration-300 ${
-            !open && "scale-0"
-          }`}
-        >
-          R6 tools
-        </h1>
-      </header>
-      <aside className="flex md:flex-col md:gap-4">
-        <section className="flex md:gap-x-4 h-full justify-center items-center md:h-[40px] transition-all">
-          <Link href="/player-contrast">
-            <ContrastIcon className="text-2xl" />
+      <div className={`flex ${open && "flex-col"} items-start gap-8`}>
+        <header className="flex md:gap-x-4 h-full justify-center items-center md:h-[40px] transition-all ">
+          <Link href="/">
+            <Logo className={`cursor-pointer duration-500 text-4xl`} />
           </Link>
-          <h2
-            className={`text-60 origin-left text-sm transition-all duration-300 ${
-              !open && "scale-0"
+          <h1
+            className={`text-60 origin-left font-medium text-xl transition-all duration-300 ${
+              !open && "hide"
             }`}
           >
-            Player Contrast
-          </h2>
-        </section>
-        <section className="flex md:gap-x-4 h-full justify-center items-center md:h-[40px] transition-all">
-          <Link href="/maps">
-            <MapIcon className="text-2xl" />
-          </Link>
-          <h2
-            className={`text-60 origin-left text-sm transition-all duration-300 ${
-              !open && "scale-0"
-            }`}
-          >
-            Player Contrast
-          </h2>
-        </section>
-        <section className="flex md:gap-x-4 h-full justify-center items-center md:h-[40px] transition-all">
-          <Link href="/random-op">
-            <RandomIcon className="text-2xl" />
-          </Link>
-          <h2
-            className={`text-60 origin-left text-sm transition-all duration-300 ${
-              !open && "scale-0"
-            }`}
-          >
-            Player Contrast
-          </h2>
-        </section>
-        <section className="flex md:gap-x-4 h-full justify-center items-center md:h-[40px] transition-all">
-          <Link href="/settings">
-            <SettingsIcon className="text-2xl" />
-          </Link>
-          <h2
-            className={`text-60 origin-left text-sm transition-all duration-300 ${
-              !open && "scale-0"
-            }`}
-          >
-            Player Contrast
-          </h2>
-        </section>
+            R6 tools
+          </h1>
+        </header>
+        <NavPlayerSearch show={open} />
+      </div>
+      <aside className="flex md:flex-col gap-8 md:gap-4">
+        {pages.map((page: PageType) => {
+          return (
+            <section className="flex md:gap-x-4 h-full justify-center items-center md:h-[40px] transition-all">
+              <Link href={page.link}>
+                <page.icon className="text-2xl" />
+              </Link>
+              <Link
+                className={`text-60 origin-left text-sm transition-all duration-300 ${
+                  !open && "hide"
+                }`}
+                href={page.link}
+              >
+                {page.label}
+              </Link>
+            </section>
+          );
+        })}
       </aside>
     </nav>
   );

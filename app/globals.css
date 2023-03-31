@@ -15,4 +15,8 @@
     max-width: 100vw;
     overflow-x: hidden;
   }
+
+  .hide {
+    display: none;
+  }
 }
