@@ -22,15 +22,15 @@ export default function MainNav() {
   const [open, setOpen] = useState(true);
 
   const pages = [
+    { label: "Random Operator", icon: RandomIcon, link: "/random-op" },
     { label: "Player Contrast", icon: ContrastIcon, link: "/player-contrast" },
-    { label: "Player Contrast", icon: MapIcon, link: "/maps" },
-    { label: "Player Contrast", icon: RandomIcon, link: "/random-op" },
-    { label: "Player Contrast", icon: SettingsIcon, link: "/settings" },
+    { label: "Maps", icon: MapIcon, link: "/maps" },
+    { label: "Settings", icon: SettingsIcon, link: "/settings" },
   ];
 
   useEffect(() => {
     setOpen(!(window.innerWidth < 769));
-  }, [window.innerWidth]);
+  }, []);
 
   return (
     <nav
@@ -62,12 +62,18 @@ export default function MainNav() {
             R6 tools
           </h1>
         </header>
-        <NavPlayerSearch show={open} />
+        <NavPlayerSearch
+          label="username"
+          show={open}
+        />
       </div>
-      <aside className="flex md:flex-col gap-8 md:gap-4">
+      <aside className="flex md:flex-col gap-8 md:gap-4 items-start">
         {pages.map((page: PageType) => {
           return (
-            <section className="flex md:gap-x-4 h-full justify-center items-center md:h-[40px] transition-all">
+            <section
+              key={page.label}
+              className="flex md:gap-x-4 h-full justify-center items-center md:h-[40px] transition-all"
+            >
               <Link href={page.link}>
                 <page.icon className="text-2xl" />
               </Link>
