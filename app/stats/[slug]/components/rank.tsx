@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 interface Props {
   mmr: string;
   rank_img: string;
