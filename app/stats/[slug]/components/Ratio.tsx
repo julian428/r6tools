@@ -10,7 +10,7 @@ interface Props {
 export default function Ratio({ left, right, IconLeft, IconRight }: Props) {
   let l: number = 0;
   let r: number = 0;
-  console.log(typeof left, typeof right);
+
   if (typeof left === "string") {
     l = parseInt(left.replace(/,/g, ""));
   } else {

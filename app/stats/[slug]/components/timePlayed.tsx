@@ -8,7 +8,7 @@ export default function TimePlayed({ time }: Props) {
   return (
     <section className="flex gap-2 items-center">
       <TimeIcon />
-      <p>{time}</p>
+      <p>{Number.isNaN(parseInt(time[0])) ? "-" : time}</p>
     </section>
   );
 }
