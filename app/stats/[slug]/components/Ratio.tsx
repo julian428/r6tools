@@ -8,16 +8,20 @@ interface Props {
 }
 
 export default function Ratio({ left, right, IconLeft, IconRight }: Props) {
-  let l: number | string = left;
-  let r: number | string = right;
+  let l: number = 0;
+  let r: number = 0;
   console.log(typeof left, typeof right);
   if (typeof left === "string") {
     l = parseInt(left.replace(/,/g, ""));
+  } else {
+    l = left;
   }
   if (typeof right === "string") {
     r = parseInt(right.replace(/,/g, ""));
+  } else {
+    r = right;
   }
-  const sum = (l as number) + (r as number);
+  const sum = l + r;
 
   const percentKills = Math.floor(((l as number) / sum) * 100);
 
