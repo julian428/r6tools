@@ -9,13 +9,13 @@ interface Props {
 
 async function getStats(playerName: string) {
   const response = await axios.get(
-    `http://localhost:3000/api/stats?name=${playerName}`
+    `https://r6tools.vercel.app/api/stats?name=${playerName}`
   );
   return response.data;
 }
 
 export default async function StatsPage({ params }: Props) {
-  const { rank, casual } = await getStats(params.slug);
+  const { rank, casual, general, deathmatch } = await getStats(params.slug);
   if (typeof rank === "string" || typeof casual === "string") <p>Not found.</p>;
   return (
     <>

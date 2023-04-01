@@ -17,5 +17,7 @@ export async function GET(request: NextRequest) {
   if (typeof params === "string") return NextResponse.json(`Error: ${params}`);
   const casual = await R6.casual("pc", params.name);
   const rank = await R6.rank("pc", params.name);
-  return NextResponse.json({ rank, casual });
+  const general = await R6.general("pc", params.name);
+  const deathmatch = await R6.deathmatch("pc", params.name);
+  return NextResponse.json({ rank, casual, general, deathmatch });
 }
