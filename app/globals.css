@@ -19,4 +19,12 @@
   .hide {
     display: none;
   }
+
+  .disabled {
+    background-color: #000000aa;
+  }
+
+  .active {
+    background-color: #176ec0aa;
+  }
 }
