@@ -27,7 +27,7 @@ export default function OperatorCard({ operator }: Props) {
     <button onClick={toggleAbility}>
       <div
         ref={operatorRef}
-        className="w-24 h-24 operator hover:animate-pulse transition-all"
+        className="w-20 h-20 md:w-24 md:h-24 operator hover:animate-pulse transition-all"
       >
         <SVG src={svgString} />
       </div>

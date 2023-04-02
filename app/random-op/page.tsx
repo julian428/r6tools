@@ -17,7 +17,7 @@ export default async function RandomOpPage() {
     <article className="p-8 text-center w-full">
       <h1 className="text-2xl mb-8">Random Operator</h1>
       <article className="flex flex-col gap-8 md:flex-row">
-        <aside className="flex flex-col gap-4">
+        <aside className="flex flex-col gap-4 items-center">
           <ButtonSet
             who=".attackers.operator"
             active="active"
@@ -32,13 +32,13 @@ export default async function RandomOpPage() {
             ))}
           </section>
         </aside>
-        <aside className="flex flex-col gap-4">
+        <aside className="flex flex-col gap-4 items-center">
           <ButtonSet
             who=".defenders.operator"
             active="active"
             disabled="disabled"
           />
-          <section className="defenders flex flex-wrap items-center justify-center md:justify-start min-w-[24rem] max-w-3xl">
+          <section className="defenders flex flex-wrap items-center justify-center md:justify-start max-w-3xl">
             {defenders.map((operator) => (
               <OperatorCard
                 key={operator.id}

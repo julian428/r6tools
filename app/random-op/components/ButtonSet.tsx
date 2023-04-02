@@ -82,7 +82,7 @@ export default function ButtonSet({ who, active, disabled }: Props) {
   };
 
   return (
-    <section className="flex justify-evenly">
+    <section className="flex justify-evenly gap-2">
       <Button
         style={{ width: "120px" }}
         onClick={() => clearAll(elements, disabled, active)}
