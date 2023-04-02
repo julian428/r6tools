@@ -7,7 +7,7 @@ async function getOperators(): Promise<{
   attackers: Operator[];
   defenders: Operator[];
 }> {
-  const response = await axios.get("http://localhost:3000/api/operators");
+  const response = await axios.get("https://r6tools.vercel.app/api/operators");
   return response.data;
 }
 
