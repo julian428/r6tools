@@ -2,17 +2,25 @@ import axios from "axios";
 import OperatorCard from "./components/Operator";
 import { Operator } from "r6operators";
 import ButtonSet from "./components/ButtonSet";
+import { notFound } from "next/navigation";
 
 async function getOperators(): Promise<{
   attackers: Operator[];
   defenders: Operator[];
-}> {
-  const response = await axios.get("https://r6tools.vercel.app/api/operators");
-  return response.data;
+} | null> {
+  try {
+    const response = await axios.get("http://localhost:3000/api/operators");
+    return response.data;
+  } catch (e) {
+    console.log(e);
+    return null;
+  }
 }
 
 export default async function RandomOpPage() {
-  const { attackers, defenders } = await getOperators();
+  const response = await getOperators();
+  if (!response) notFound();
+  const { attackers, defenders } = response;
   return (
     <article className="p-8 text-center w-full">
       <h1 className="text-2xl mb-8">Random Operator</h1>
