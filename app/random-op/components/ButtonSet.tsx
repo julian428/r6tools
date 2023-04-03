@@ -46,9 +46,12 @@ const spin = async (elements: NodeList, disabled: string, active: string) => {
     await sleep(150);
     (elements[i] as HTMLDivElement).classList.remove(active);
   }
+  let continousSkips = 0;
   while (
     (elements[theChosensNumber] as HTMLDivElement).classList.contains(disabled)
   ) {
+    if (continousSkips >= length) return;
+    continousSkips++;
     if (theChosensNumber >= length - 1) theChosensNumber = 0;
     theChosensNumber++;
   }
