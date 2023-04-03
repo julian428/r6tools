@@ -63,7 +63,7 @@ export default function RandomOpPage() {
     <article className="p-8 text-center w-full">
       <div className="flex gap-2 justify-center items-center mb-8">
         <h1 className="text-2xl">Random Operator</h1>
-        <Info message="Click an operator icon to enable or disable" />
+        <Info message="Click an operator icon to enable or disable. CTRL click an operator to show info" />
       </div>
       <article className="flex flex-col gap-8 md:flex-row md:flex-wrap md:justify-center">
         <aside className="flex flex-col gap-4 items-center">

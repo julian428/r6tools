@@ -19,7 +19,9 @@ export default function Info({ message }: Props) {
       <article
         className={`absolute ${
           !contextOpen && "scale-0"
-        } bg-30 text-60 px-2 py-1 rounded -right-10 -bottom-16 transition-all w-48`}
+        } bg-30 text-60 px-2 py-1 rounded -${
+          window.innerWidth < 789 ? "left" : "right"
+        }-48 -bottom-28 z-50 transition-all w-48`}
       >
         {message}
       </article>
