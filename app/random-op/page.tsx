@@ -7,6 +7,35 @@ function getOperators(): string {
   const attackers: operators.Operator[] = [];
   const defenders: operators.Operator[] = [];
 
+  const customSort = (
+    operatorA: operators.Operator,
+    operatorB: operators.Operator
+  ) => {
+    const a =
+      (operatorA.meta?.season === "Release"
+        ? "Y0S0"
+        : operatorA.meta?.season) || "Y0S0";
+    const b =
+      (operatorB.meta?.season === "Release"
+        ? "Y0S0"
+        : operatorB.meta?.season) || "Y0S0";
+
+    const splitYearNSeason = (item: string) => {
+      const year = parseInt(item.charAt(1));
+      const season = parseInt(item.charAt(3));
+      return [year, season];
+    };
+
+    const [yearA, seasonA] = splitYearNSeason(a);
+    const [yearB, seasonB] = splitYearNSeason(b);
+
+    if (yearA < yearB) return -1;
+    if (yearA > yearB) return 1;
+    if (seasonA < seasonB) return -1;
+    if (seasonA > seasonB) return 1;
+    return 0;
+  };
+
   Object.entries(operators).map(([name, operator]) => {
     const role = (operator as operators.Operator).role;
     switch (role) {
@@ -20,6 +49,10 @@ function getOperators(): string {
         break;
     }
   });
+
+  attackers.sort(customSort);
+  defenders.sort(customSort);
+
   return JSON.stringify({ attackers, defenders });
 }
 
@@ -39,7 +72,7 @@ export default function RandomOpPage() {
             active="active"
             disabled="disabled"
           />
-          <section className="attackers flex flex-wrap items-center md:justify-start min-w-[24rem] max-w-3xl justify-center">
+          <section className="attackers flex flex-wrap items-center md:justify-start min-w-[24rem] max-w-5xl justify-center">
             {attackers.map((attacker: operators.Operator) => (
               <OperatorCard
                 key={attacker.id}
@@ -54,7 +87,7 @@ export default function RandomOpPage() {
             active="active"
             disabled="disabled"
           />
-          <section className="defenders flex flex-wrap items-center justify-center md:justify-start max-w-3xl">
+          <section className="defenders flex flex-wrap items-center justify-center md:justify-start max-w-5xl">
             {defenders.map((defender: operators.Operator) => (
               <OperatorCard
                 key={defender.id}
