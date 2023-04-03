@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AiOutlineInfoCircle as InfoIcon } from "react-icons/ai";
 
 interface Props {
@@ -8,6 +8,11 @@ interface Props {
 
 export default function Info({ message }: Props) {
   const [contextOpen, setContextOpen] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    setIsDesktop(window.innerWidth > 789);
+  }, []);
 
   return (
     <div className="relative">
@@ -20,7 +25,7 @@ export default function Info({ message }: Props) {
         className={`absolute ${
           !contextOpen && "scale-0"
         } bg-30 text-60 px-2 py-1 rounded -${
-          window.innerWidth < 789 ? "left" : "right"
+          isDesktop ? "right" : "left"
         }-48 -bottom-28 z-50 transition-all w-48`}
       >
         {message}
