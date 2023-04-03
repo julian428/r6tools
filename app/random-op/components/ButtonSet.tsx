@@ -46,7 +46,7 @@ const spin = async (elements: NodeList, disabled: string, active: string) => {
     await sleep(150);
     (elements[i] as HTMLDivElement).classList.remove(active);
   }
-  let continousSkips = 0;
+  let continousSkips = 0; //? nececary so there is no infinite loop if every operator is disabled
   while (
     (elements[theChosensNumber] as HTMLDivElement).classList.contains(disabled)
   ) {
@@ -85,7 +85,7 @@ export default function ButtonSet({ who, active, disabled }: Props) {
   };
 
   return (
-    <section className="flex justify-evenly gap-2">
+    <section className="flex justify-evenly w-full gap-2">
       <Button
         style={{ width: "120px" }}
         onClick={() => clearAll(elements, disabled, active)}

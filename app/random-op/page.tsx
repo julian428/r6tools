@@ -1,7 +1,7 @@
 import * as operators from "r6operators";
 import OperatorCard from "./components/Operator";
 import ButtonSet from "./components/ButtonSet";
-import { notFound } from "next/navigation";
+import Info from "./components/Info";
 
 function getOperators(): string {
   const attackers: operators.Operator[] = [];
@@ -28,8 +28,11 @@ export default function RandomOpPage() {
   const { attackers, defenders } = JSON.parse(response);
   return (
     <article className="p-8 text-center w-full">
-      <h1 className="text-2xl mb-8">Random Operator</h1>
-      <article className="flex flex-col gap-8 md:flex-row">
+      <div className="flex gap-2 justify-center items-center mb-8">
+        <h1 className="text-2xl">Random Operator</h1>
+        <Info message="Click an operator icon to enable or disable" />
+      </div>
+      <article className="flex flex-col gap-8 md:flex-row md:flex-wrap md:justify-center">
         <aside className="flex flex-col gap-4 items-center">
           <ButtonSet
             who=".attackers.operator"
