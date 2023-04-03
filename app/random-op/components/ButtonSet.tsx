@@ -88,9 +88,9 @@ export default function ButtonSet({ who, active, disabled }: Props) {
     <section className="flex justify-evenly w-full gap-2">
       <Button
         style={{ width: "120px" }}
-        onClick={() => clearAll(elements, disabled, active)}
+        onClick={() => disableAll(elements, disabled, active)}
       >
-        Clear all
+        Disable all
       </Button>
       <Button
         onClick={handleSpinning}
@@ -100,9 +100,9 @@ export default function ButtonSet({ who, active, disabled }: Props) {
       </Button>
       <Button
         style={{ width: "120px" }}
-        onClick={() => disableAll(elements, disabled, active)}
+        onClick={() => clearAll(elements, disabled, active)}
       >
-        Disable all
+        Clear all
       </Button>
     </section>
   );
