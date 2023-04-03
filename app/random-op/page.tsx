@@ -1,26 +1,31 @@
-import axios from "axios";
+import * as operators from "r6operators";
 import OperatorCard from "./components/Operator";
-import { Operator } from "r6operators";
 import ButtonSet from "./components/ButtonSet";
 import { notFound } from "next/navigation";
 
-async function getOperators(): Promise<{
-  attackers: Operator[];
-  defenders: Operator[];
-} | null> {
-  try {
-    const response = await axios.get("http://localhost:3000/api/operators");
-    return response.data;
-  } catch (e) {
-    console.log(e);
-    return null;
-  }
+function getOperators(): string {
+  const attackers: operators.Operator[] = [];
+  const defenders: operators.Operator[] = [];
+
+  Object.entries(operators).map(([name, operator]) => {
+    const role = (operator as operators.Operator).role;
+    switch (role) {
+      case "Attacker":
+        attackers.push(operator as operators.Operator);
+        break;
+      case "Defender":
+        defenders.push(operator as operators.Operator);
+        break;
+      case "Recruit":
+        break;
+    }
+  });
+  return JSON.stringify({ attackers, defenders });
 }
 
-export default async function RandomOpPage() {
-  const response = await getOperators();
-  if (!response) notFound();
-  const { attackers, defenders } = response;
+export default function RandomOpPage() {
+  const response = getOperators();
+  const { attackers, defenders } = JSON.parse(response);
   return (
     <article className="p-8 text-center w-full">
       <h1 className="text-2xl mb-8">Random Operator</h1>
@@ -32,10 +37,10 @@ export default async function RandomOpPage() {
             disabled="disabled"
           />
           <section className="attackers flex flex-wrap items-center md:justify-start min-w-[24rem] max-w-3xl justify-center">
-            {attackers.map((operator) => (
+            {attackers.map((attacker: operators.Operator) => (
               <OperatorCard
-                key={operator.id}
-                operator={operator}
+                key={attacker.id}
+                operator={attacker}
               />
             ))}
           </section>
@@ -47,10 +52,10 @@ export default async function RandomOpPage() {
             disabled="disabled"
           />
           <section className="defenders flex flex-wrap items-center justify-center md:justify-start max-w-3xl">
-            {defenders.map((operator) => (
+            {defenders.map((defender: operators.Operator) => (
               <OperatorCard
-                key={operator.id}
-                operator={operator}
+                key={defender.id}
+                operator={defender}
               />
             ))}
           </section>
