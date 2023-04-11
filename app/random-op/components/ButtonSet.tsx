@@ -43,7 +43,7 @@ const spin = async (elements: NodeList, disabled: string, active: string) => {
     );
     if (isDisabled) continue;
     (elements[i] as HTMLDivElement).classList.add(active);
-    await sleep(150);
+    await sleep(75);
     (elements[i] as HTMLDivElement).classList.remove(active);
   }
   let continousSkips = 0; //? nececary so there is no infinite loop if every operator is disabled
